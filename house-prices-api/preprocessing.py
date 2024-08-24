@@ -16,6 +16,8 @@ categorical_transformer = Pipeline(steps=[
     ('onehot', OneHotEncoder(handle_unknown='ignore'))
 ])
 
+
+'''
 # Update categorical and numerical columns
 categorical_columns = Index(['MSZoning', 'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities',
        'LotConfig', 'LandSlope', 'Neighborhood', 'Condition1', 'Condition2',
@@ -37,6 +39,10 @@ numerical_columns = Index(['Id', 'MSSubClass', 'LotFrontage', 'LotArea', 'Overal
        'OpenPorchSF', 'EnclosedPorch', '3SsnPorch', 'ScreenPorch', 'PoolArea',
        'MiscVal', 'MoSold', 'YrSold'],
       dtype='object')
+'''
+categorical_columns = Index(['MSZoning', 'HouseStyle'], dtype='object')
+
+numerical_columns = Index(['LotArea', 'YearBuilt', 'TotRmsAbvGrd'], dtype='object')
 
 # Remove target variable from numerical columns
 # numerical_columns = numerical_columns.drop('SalePrice')

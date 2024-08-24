@@ -8,6 +8,7 @@ import preprocessing
 # Load your trained model
 model = joblib.load(".\linear_reg_model.joblib")
 
+'''
 # Define the columns that your model expects
 class HouseFeatures(BaseModel):
     # Replace these with the actual features used by your model
@@ -32,6 +33,11 @@ class HouseFeatures(BaseModel):
     WoodDeckSF: int
     OpenPorchSF: int
     # Add all other necessary features
+'''
+
+
+
+
 
 app = FastAPI()
 
