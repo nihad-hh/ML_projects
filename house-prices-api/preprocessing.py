@@ -1,9 +1,14 @@
-from pandas.core.indexes.base import Index
+import pandas as pd
+from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
+df_train = pd.read_csv("train.csv")
+
+X_train = df_train.drop("SalePrice", axis = 1)
+# y_train = np.log(df_train["SalePrice"])
 
 # Define transformers for numerical and categorical columns
 numerical_transformer = Pipeline(steps=[
@@ -16,36 +21,15 @@ categorical_transformer = Pipeline(steps=[
     ('onehot', OneHotEncoder(handle_unknown='ignore'))
 ])
 
+categorical_columns = pd.Index(['MSZoning', 'HouseStyle'])
 
-'''
-# Update categorical and numerical columns
-categorical_columns = Index(['MSZoning', 'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities',
-       'LotConfig', 'LandSlope', 'Neighborhood', 'Condition1', 'Condition2',
-       'BldgType', 'HouseStyle', 'RoofStyle', 'RoofMatl', 'Exterior1st',
-       'Exterior2nd', 'MasVnrType', 'ExterQual', 'ExterCond', 'Foundation',
-       'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1', 'BsmtFinType2',
-       'Heating', 'HeatingQC', 'CentralAir', 'Electrical', 'KitchenQual',
-       'Functional', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual',
-       'GarageCond', 'PavedDrive', 'PoolQC', 'Fence', 'MiscFeature',
-       'SaleType', 'SaleCondition'],
-      dtype='object')
+numerical_columns = pd.Index(['LotArea', 'YearBuilt', 'TotRmsAbvGrd'])
 
-numerical_columns = Index(['Id', 'MSSubClass', 'LotFrontage', 'LotArea', 'OverallQual',
-       'OverallCond', 'YearBuilt', 'YearRemodAdd', 'MasVnrArea', 'BsmtFinSF1',
-       'BsmtFinSF2', 'BsmtUnfSF', 'TotalBsmtSF', '1stFlrSF', '2ndFlrSF',
-       'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'FullBath',
-       'HalfBath', 'BedroomAbvGr', 'KitchenAbvGr', 'TotRmsAbvGrd',
-       'Fireplaces', 'GarageYrBlt', 'GarageCars', 'GarageArea', 'WoodDeckSF',
-       'OpenPorchSF', 'EnclosedPorch', '3SsnPorch', 'ScreenPorch', 'PoolArea',
-       'MiscVal', 'MoSold', 'YrSold'],
-      dtype='object')
-'''
-categorical_columns = Index(['MSZoning', 'HouseStyle'], dtype='object')
+df_cats = X_train[categorical_columns]
 
-numerical_columns = Index(['LotArea', 'YearBuilt', 'TotRmsAbvGrd'], dtype='object')
+df_nums = X_train[numerical_columns]
 
-# Remove target variable from numerical columns
-# numerical_columns = numerical_columns.drop('SalePrice')
+X_train = pd.concat([df_nums, df_cats], axis=1)
 
 # Combine transformers using ColumnTransformer
 preprocessor = ColumnTransformer(
@@ -57,3 +41,5 @@ preprocessor = ColumnTransformer(
 # Create a pipeline with the preprocessor
 pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor)])
+
+pipeline = pipeline.fit(X_train)
