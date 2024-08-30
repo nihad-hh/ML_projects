@@ -1,0 +1,84 @@
+from pydantic import BaseModel
+from typing import Optional
+
+class HouseFeatures(BaseModel):
+    Id: int
+    MSSubClass: int
+    MSZoning: Optional[str]
+    LotFrontage: Optional[float]
+    LotArea: int
+    Street: Optional[str]
+    Alley: Optional[str]
+    LotShape: Optional[str]
+    LandContour: Optional[str]
+    Utilities: Optional[str]
+    LotConfig: Optional[str]
+    LandSlope: Optional[str]
+    Neighborhood: Optional[str]
+    Condition1: Optional[str]
+    Condition2: Optional[str]
+    BldgType: Optional[str]
+    HouseStyle: Optional[str]
+    OverallQual: int
+    OverallCond: int
+    YearBuilt: int
+    YearRemodAdd: int
+    RoofStyle: Optional[str]
+    RoofMatl: Optional[str]
+    Exterior1st: Optional[str]
+    Exterior2nd: Optional[str]
+    MasVnrType: Optional[str]
+    MasVnrArea: Optional[float]
+    ExterQual: Optional[str]
+    ExterCond: Optional[str]
+    Foundation: Optional[str]
+    BsmtQual: Optional[str]
+    BsmtCond: Optional[str]
+    BsmtExposure: Optional[str]
+    BsmtFinType1: Optional[str]
+    BsmtFinSF1: Optional[float]
+    BsmtFinType2: Optional[str]
+    BsmtFinSF2: Optional[float]
+    BsmtUnfSF: Optional[float]
+    TotalBsmtSF: Optional[float]
+    Heating: Optional[str]
+    HeatingQC: Optional[str]
+    CentralAir: Optional[str]
+    Electrical: Optional[str]
+    firstFlrSF: Optional[int]  # 1stFlrSF renamed for valid Python variable name
+    secondFlrSF: Optional[int]  # 2ndFlrSF renamed for valid Python variable name
+    LowQualFinSF: Optional[int]
+    GrLivArea: int
+    BsmtFullBath: Optional[int]
+    BsmtHalfBath: Optional[int]
+    FullBath: int
+    HalfBath: Optional[int]
+    BedroomAbvGr: int
+    KitchenAbvGr: int
+    KitchenQual: Optional[str]
+    TotRmsAbvGrd: int
+    Functional: Optional[str]
+    Fireplaces: Optional[int]
+    FireplaceQu: Optional[str]
+    GarageType: Optional[str]
+    GarageYrBlt: Optional[int]
+    GarageFinish: Optional[str]
+    GarageCars: Optional[int]
+    GarageArea: Optional[float]
+    GarageQual: Optional[str]
+    GarageCond: Optional[str]
+    PavedDrive: Optional[str]
+    WoodDeckSF: Optional[int]
+    OpenPorchSF: Optional[int]
+    EnclosedPorch: Optional[int]
+    threeSsnPorch: Optional[int]  # 3SsnPorch renamed for valid Python variable name
+    ScreenPorch: Optional[int]
+    PoolArea: Optional[int]
+    PoolQC: Optional[str]
+    Fence: Optional[str]
+    MiscFeature: Optional[str]
+    MiscVal: Optional[int]
+    MoSold: int
+    YrSold: int
+    SaleType: Optional[str]
+    SaleCondition: Optional[str]
