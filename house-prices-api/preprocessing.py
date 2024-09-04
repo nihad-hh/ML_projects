@@ -1,3 +1,6 @@
+# currently not used, not maybe be used in the future
+# instead of this, preprocessing pipeline was exported directly from notebook and used in main.py
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
