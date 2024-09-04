@@ -4,4 +4,5 @@ Project based on the Kaggle dataset: https://www.kaggle.com/competitions/house-p
 
 **kaggle_house_prices.ipynb** - EDA, model training and evaluation
 
+**example_entry.md** - example of request body for testing
 
